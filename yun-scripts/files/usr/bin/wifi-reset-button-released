@@ -1,0 +1,27 @@
+#!/bin/sh
+
+logger -t network "wifi reset button released"
+
+if [ ! -f /tmp/wifi.reset ]
+then
+	logger -t network "no previous /tmp/wifi.reset file found. exiting"
+	exit 0
+fi
+
+released_at=`date +%s`
+pressed_at=`cat /tmp/wifi.reset`
+
+pressed_for=`expr $released_at - $pressed_at`
+
+logger -t network "wifi reset button pressed for $pressed_for"
+ 
+if [ $pressed_for -gt 3 ]
+then
+	logger -t network "resetting wifi"
+	sleep 2
+	wifi-sta
+	exit 0
+fi
+
+blink-stop system
+
