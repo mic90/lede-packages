@@ -39,13 +39,7 @@ define Package/yun-conf/install
 	$(INSTALL_DATA) ./files/etc/avahi/services/arduino.service $(1)/etc/avahi/services/
 	$(INSTALL_DATA) ./files/etc/hotplug.d/button/buttons $(1)/etc/hotplug.d/button/
 
-	$(INSTALL_DATA) ./files/etc/httpd.conf $(1)/etc/
 	$(INSTALL_DATA) ./files/etc/config/arduino $(1)/etc/config/
-	$(INSTALL_DATA) ./files/etc/config/firewall $(1)/etc/config/
-	$(INSTALL_DATA) ./files/etc/config/fstab $(1)/etc/config/
-	$(INSTALL_DATA) ./files/etc/config/network $(1)/etc/config/
-	$(INSTALL_DATA) ./files/etc/config/system $(1)/etc/config/
-	$(INSTALL_DATA) ./files/etc/config/wireless $(1)/etc/config/
 
 	$(INSTALL_CONF) ./files/etc/opkg/keys/* $(1)/etc/opkg/keys/
 
